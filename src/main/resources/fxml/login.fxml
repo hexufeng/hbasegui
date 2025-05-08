@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.hbasegui.controller.LoginController"
+      prefWidth="800">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="HBase 连接配置" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    
+    <GridPane vgap="10" hgap="10" prefWidth="700">
+        <columnConstraints>
+            <ColumnConstraints minWidth="200" prefWidth="200"/>
+            <ColumnConstraints minWidth="400" prefWidth="400"/>
+        </columnConstraints>
+        
+        <Label text="Zookeeper Quorum:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="quorumField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="ZNode Parent:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="znodeParentField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="RPC Timeout (ms):" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="rpcTimeoutField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Operation Timeout (ms):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="operationTimeoutField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Scanner Timeout (ms):" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextField fx:id="scannerTimeoutField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="连接" onAction="#handleConnect" defaultButton="true"/>
+        <Button text="取消" onAction="#handleCancel"/>
+    </HBox>
+
+    <Label fx:id="errorLabel" style="-fx-text-fill: red;"/>
+</VBox> 

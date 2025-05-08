@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.hbasegui.controller.MainController" prefWidth="1600" prefHeight="900">
+    <!-- 左侧表格列表 -->
+    <left>
+        <VBox spacing="10" prefWidth="300">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="表列表" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <ListView fx:id="tableListView" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <!-- 顶部命令区域 -->
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="集群信息" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TextArea fx:id="clusterInfoArea" prefRowCount="3" editable="false"/>
+            
+            <Label text="命令执行" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <HBox spacing="10">
+                <TextField fx:id="commandField" HBox.hgrow="ALWAYS"/>
+                <Button text="执行" onAction="#handleExecuteCommand"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- 右侧数据展示区域 -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="数据预览" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <TableView fx:id="dataTableView" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="rowKeyColumn" text="Row Key" prefWidth="200"/>
+                    <TableColumn fx:id="familyColumn" text="Family" prefWidth="150"/>
+                    <TableColumn fx:id="qualifierColumn" text="Qualifier" prefWidth="200"/>
+                    <TableColumn fx:id="valueColumn" text="Value" prefWidth="300"/>
+                    <TableColumn fx:id="timestampColumn" text="Timestamp" prefWidth="150"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- 底部日志区域 -->
+    <bottom>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="操作日志" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Button text="清除" onAction="#handleClearLogs"/>
+            </HBox>
+            <TextArea fx:id="logArea" prefRowCount="5" editable="false" style="-fx-font-family: monospace;"/>
+        </VBox>
+    </bottom>
+</BorderPane> 
