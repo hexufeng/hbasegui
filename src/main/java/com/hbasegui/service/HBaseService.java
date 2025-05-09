@@ -19,9 +19,7 @@ public class HBaseService {
     private Table table;
 
     public void connect(Properties properties) throws IOException {
-        // 设置环境变量
-        System.setProperty("HADOOP_USER_NAME", "da_music");
-        
+
         Configuration config = HBaseConfiguration.create();
         properties.forEach((key, value) -> config.set(key.toString(), value.toString()));
         
